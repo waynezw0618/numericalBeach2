@@ -1,0 +1,3 @@
+numericalBeach.C
+
+LIB = $(FOAM_LIBBIN)/libnumericalbeach2
