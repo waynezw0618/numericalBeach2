@@ -84,7 +84,7 @@ numericalBeach::numericalBeach(volVectorField& U)
                 dimensionedScalar("zero", dimensionSet(0, 0, -1, 0, 0), 0.0)
                 )
 {
-    zoneCenterXcoor_=waveProperties.lookupOrDefault<dimensionedScalar>("zoneCenterXcoor",dimensionedScalar("Xc",dimLength,0.0));
+    zoneCenterXcoor_=this->lookupOrDefault<dimensionedScalar>("zoneCenterXcoor",dimensionedScalar("Xc",dimLength,0.0));
     AV_=waveProperties.lookupOrDefault<dimensionedScalar>("AV",dimensionedScalar("cctv",dimLength,0.0));
     //AV_(zoneCenterXcoor_),
     zoneCenterZcoor_=((h1_+h2_)/2*waveL_);
