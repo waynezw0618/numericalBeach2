@@ -48,7 +48,7 @@ numericalBeach::numericalBeach(volVectorField& U)
       IOobject::MUST_READ,
       IOobject::NO_WRITE
       )
-     )
+     ),
     //waveT_(lookup("waveT")),
     //waveL_(lookup("waveL")),
     //waveOmega_(2*mathematicalConstant::pi/waveT_),
