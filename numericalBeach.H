@@ -81,11 +81,11 @@ class numericalBeach
     scalar h2_; // h2> D+H/2 to include all cells in the vertical direction
     scalar deltaL_;
     dimensionedScalar Lx_;
-    //dimensionedScalar zoneCenterXcoor_;
+    dimensionedScalar zoneCenterXcoor_;
     dimensionedScalar zoneCenterZcoor_;
     
     // for Beach current
-    //dimensionedScalar AV_;
+    dimensionedScalar AV_;
   //  scalar curTsoft_;
 
     volScalarField sourceZone_;
