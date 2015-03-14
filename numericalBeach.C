@@ -65,7 +65,7 @@ numericalBeach::numericalBeach(volVectorField& U)
     //h2_(lookupOrDefault<scalar>("h2",scalar(0.0))), // h2> D+H/2 to include all cells in the vertical direction
     //deltaL_(lookupOrDefault<scalar>("detL",scalar(0.016666))), // default value based on 60 cells/wave length
     //Lx_(deltaL_* waveL_), //according to Gauss Theory, Source =2U/Lx,
-    //zoneCenterXcoor_(lookupOrDefault<dimensionedScalar>("zoneCenterXcoor",dimensionedScalar("Xc",dimLength,0.0))),
+    zoneCenterXcoor_(lookupOrDefault<dimensionedScalar>("zoneCenterXcoor",dimensionedScalar("Xc",dimLength,0.0))),
    // AV_(lookupOrDefault<dimensionedScalar>("AV",dimensionedScalar("cctv",dimLength,0.0))),
     //AV_(zoneCenterXcoor_),
     //zoneCenterZcoor_((h1_+h2_)/2*waveL_),
