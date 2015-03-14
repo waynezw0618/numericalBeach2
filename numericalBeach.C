@@ -86,7 +86,7 @@ numericalBeach::numericalBeach(volVectorField& U)
     zoneCenterXcoor_=this->lookupOrDefault<dimensionedScalar>("zoneCenterXcoor",dimensionedScalar("Xc",dimLength,0.0));
     //AV_=this->lookupOrDefault<dimensionedScalar>("AV",dimensionedScalar("cctv",dimLength,0.0));
     //AV_(zoneCenterXcoor_),
-    zoneCenterZcoor_=((h1_+h2_)/2*waveL_);
+    //zoneCenterZcoor_=((h1_+h2_)/2*waveL_);
     //  curTsoft_(lookupOrDefault<scalar>("curTsoft",0.0)),
 
 }
@@ -119,7 +119,7 @@ tmp<volScalarField> numericalBeach::damping() const
 
     volScalarField& damping = tDamping();
 
-    const volVectorField::GeometricBoundaryField& bvf = U_.boundaryField();
+   /* const volVectorField::GeometricBoundaryField& bvf = U_.boundaryField();
     forAll(bvf, patchi)
     {
         if (isType<numericalBeachFvPatchField>(bvf[patchi]))
@@ -129,7 +129,7 @@ tmp<volScalarField> numericalBeach::damping() const
 
             damping = max(damping, beach.internalDamping());
         }
-    }
+    }*/
 
     return tDamping;
 }
