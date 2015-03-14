@@ -38,39 +38,6 @@ namespace Foam
 numericalBeach::numericalBeach(volVectorField& U)
 :
     U_(U)
-    //waveT_(lookup("waveT")),
-    //waveL_(lookup("waveL")),
-    //waveOmega_(2*mathematicalConstant::pi/waveT_),
-    //waveK_(2*mathematicalConstant::pi/waveL_),
-    //waveC_(waveL_/waveT_),
-    //waveTsoft_(lookupOrDefault<scalar>("waveTsoft",scalar(0.0))),
-   // massSource_(lookupOrDefault<Switch>("massSource",true)), //false
-    //momentumSource_(lookupOrDefault<Switch>("momentumSource",false)), //false
-   // secondOrder_(lookupOrDefault<Switch>("SecondOrder",false)),
-    //X_(lookupOrDefault<vector>("streamDirection",vector(1, 0, 0))),
-    //Z_(lookupOrDefault<vector>("streamDirection",vector(0, 1, 0))),
-    //Tdamp_(lookupOrDefault<tensor>("beachDirection",tensor(1, 0, 0, 0, 1, 0, 0, 0, 1)-X_*X_)),
-    //h1_(lookupOrDefault<scalar>("h1",scalar(2.0))), // h1=0
-    //h2_(lookupOrDefault<scalar>("h2",scalar(0.0))), // h2> D+H/2 to include all cells in the vertical direction
-    //deltaL_(lookupOrDefault<scalar>("detL",scalar(0.016666))), // default value based on 60 cells/wave length
-    //Lx_(deltaL_* waveL_), //according to Gauss Theory, Source =2U/Lx,
-   // zoneCenterXcoor_(lookupOrDefault<dimensionedScalar>("zoneCenterXcoor",dimensionedScalar("Xc",dimLength,0.0))),
-   // AV_(lookupOrDefault<dimensionedScalar>("AV",dimensionedScalar("cctv",dimLength,0.0))),
-    //AV_(zoneCenterXcoor_),
-    //zoneCenterZcoor_((h1_+h2_)/2*waveL_),
-  //  curTsoft_(lookupOrDefault<scalar>("curTsoft",0.0)),
-    /*sourceZone_(
-                IOobject
-                (
-                 "sourceZone",
-                 U.db().time().timeName(),
-                 U.mesh(),
-                 IOobject::NO_READ,
-                 IOobject::NO_WRITE
-                 ),
-                U.mesh(),
-                dimensionedScalar("zero", dimensionSet(0, 0, -1, 0, 0), 0.0)
-                )*/
 {
     dict=IOdictionary
     (
@@ -82,8 +49,41 @@ numericalBeach::numericalBeach(volVectorField& U)
       IOobject::MUST_READ,
       IOobject::NO_WRITE
       )
-     ),
+     );
     zoneCenterXcoor_=dict.lookupOrDefault<dimensionedScalar>("zoneCenterXcoor",dimensionedScalar("Xc",dimLength,0.0));
+    //waveT_(lookup("waveT")),
+    //waveL_(lookup("waveL")),
+    //waveOmega_(2*mathematicalConstant::pi/waveT_),
+    //waveK_(2*mathematicalConstant::pi/waveL_),
+    //waveC_(waveL_/waveT_),
+    //waveTsoft_(lookupOrDefault<scalar>("waveTsoft",scalar(0.0))),
+    // massSource_(lookupOrDefault<Switch>("massSource",true)), //false
+    //momentumSource_(lookupOrDefault<Switch>("momentumSource",false)), //false
+    // secondOrder_(lookupOrDefault<Switch>("SecondOrder",false)),
+    //X_(lookupOrDefault<vector>("streamDirection",vector(1, 0, 0))),
+    //Z_(lookupOrDefault<vector>("streamDirection",vector(0, 1, 0))),
+    //Tdamp_(lookupOrDefault<tensor>("beachDirection",tensor(1, 0, 0, 0, 1, 0, 0, 0, 1)-X_*X_)),
+    //h1_(lookupOrDefault<scalar>("h1",scalar(2.0))), // h1=0
+    //h2_(lookupOrDefault<scalar>("h2",scalar(0.0))), // h2> D+H/2 to include all cells in the vertical direction
+    //deltaL_(lookupOrDefault<scalar>("detL",scalar(0.016666))), // default value based on 60 cells/wave length
+    //Lx_(deltaL_* waveL_), //according to Gauss Theory, Source =2U/Lx,
+    // zoneCenterXcoor_(lookupOrDefault<dimensionedScalar>("zoneCenterXcoor",dimensionedScalar("Xc",dimLength,0.0))),
+    // AV_(lookupOrDefault<dimensionedScalar>("AV",dimensionedScalar("cctv",dimLength,0.0))),
+    //AV_(zoneCenterXcoor_),
+    //zoneCenterZcoor_((h1_+h2_)/2*waveL_),
+    //  curTsoft_(lookupOrDefault<scalar>("curTsoft",0.0)),
+    /*sourceZone_(
+     IOobject
+     (
+     "sourceZone",
+     U.db().time().timeName(),
+     U.mesh(),
+     IOobject::NO_READ,
+     IOobject::NO_WRITE
+     ),
+     U.mesh(),
+     dimensionedScalar("zero", dimensionSet(0, 0, -1, 0, 0), 0.0)
+     )*/
     //AV_=this->lookupOrDefault<dimensionedScalar>("AV",dimensionedScalar("cctv",dimLength,0.0));
     //AV_(zoneCenterXcoor_),
     //zoneCenterZcoor_=((h1_+h2_)/2*waveL_);
