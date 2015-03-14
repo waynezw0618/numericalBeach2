@@ -37,18 +37,7 @@ namespace Foam
 
 numericalBeach::numericalBeach(volVectorField& U)
 :
-    U_(U),
-    IOdictionary
-    (
-     IOobject
-     (
-      "waveProperties",
-      U_.time().constant(),
-      U_.db(),
-      IOobject::MUST_READ,
-      IOobject::NO_WRITE
-      )
-     ),
+    U_(U)
     //waveT_(lookup("waveT")),
     //waveL_(lookup("waveL")),
     //waveOmega_(2*mathematicalConstant::pi/waveT_),
@@ -65,7 +54,7 @@ numericalBeach::numericalBeach(volVectorField& U)
     //h2_(lookupOrDefault<scalar>("h2",scalar(0.0))), // h2> D+H/2 to include all cells in the vertical direction
     //deltaL_(lookupOrDefault<scalar>("detL",scalar(0.016666))), // default value based on 60 cells/wave length
     //Lx_(deltaL_* waveL_), //according to Gauss Theory, Source =2U/Lx,
-    zoneCenterXcoor_(lookupOrDefault<dimensionedScalar>("zoneCenterXcoor",dimensionedScalar("Xc",dimLength,0.0))),
+   // zoneCenterXcoor_(lookupOrDefault<dimensionedScalar>("zoneCenterXcoor",dimensionedScalar("Xc",dimLength,0.0))),
    // AV_(lookupOrDefault<dimensionedScalar>("AV",dimensionedScalar("cctv",dimLength,0.0))),
     //AV_(zoneCenterXcoor_),
     //zoneCenterZcoor_((h1_+h2_)/2*waveL_),
@@ -83,7 +72,18 @@ numericalBeach::numericalBeach(volVectorField& U)
                 dimensionedScalar("zero", dimensionSet(0, 0, -1, 0, 0), 0.0)
                 )*/
 {
-    zoneCenterXcoor_=this->lookupOrDefault<dimensionedScalar>("zoneCenterXcoor",dimensionedScalar("Xc",dimLength,0.0));
+    dict=IOdictionary
+    (
+     IOobject
+     (
+      "waveProperties",
+      U_.time().constant(),
+      U_.db(),
+      IOobject::MUST_READ,
+      IOobject::NO_WRITE
+      )
+     ),
+    zoneCenterXcoor_=dict.lookupOrDefault<dimensionedScalar>("zoneCenterXcoor",dimensionedScalar("Xc",dimLength,0.0));
     //AV_=this->lookupOrDefault<dimensionedScalar>("AV",dimensionedScalar("cctv",dimLength,0.0));
     //AV_(zoneCenterXcoor_),
     //zoneCenterZcoor_=((h1_+h2_)/2*waveL_);

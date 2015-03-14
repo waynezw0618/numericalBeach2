@@ -51,14 +51,13 @@ namespace Foam
 \*---------------------------------------------------------------------------*/
 
 class numericalBeach
-:
-    public IOdictionary
 {
 
     // Private data
 
     //- Velocity field to be damped at boundaries
     volVectorField& U_;
+    IOdictionary dict;
     //- for test only
     //- wave parameters
    /* dimensionedScalar waveT_;
