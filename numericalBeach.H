@@ -57,11 +57,11 @@ class numericalBeach
 
     // Private data
 
-        //- Velocity field to be damped at boundaries
-        volVectorField& U_;
+    //- Velocity field to be damped at boundaries
+    volVectorField& U_;
     //- for test only
     //- wave parameters
-    dimensionedScalar waveT_;
+   /* dimensionedScalar waveT_;
     dimensionedScalar waveL_;
     dimensionedScalar waveOmega_;
     dimensionedScalar waveK_;
@@ -80,15 +80,15 @@ class numericalBeach
     scalar h1_; // h1=0
     scalar h2_; // h2> D+H/2 to include all cells in the vertical direction
     scalar deltaL_;
-    dimensionedScalar Lx_;
+    dimensionedScalar Lx_;*/
     dimensionedScalar zoneCenterXcoor_;
-    dimensionedScalar zoneCenterZcoor_;
+  //  dimensionedScalar zoneCenterZcoor_;
     
     // for Beach current
    // dimensionedScalar AV_;
   //  scalar curTsoft_;
 
-    volScalarField sourceZone_;
+//    volScalarField sourceZone_;
 
 
 
