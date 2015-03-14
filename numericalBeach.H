@@ -57,7 +57,7 @@ class numericalBeach
 
     //- Velocity field to be damped at boundaries
     volVectorField& U_;
-    IOdictionary dict;
+    //IOdictionary dict;
     //- for test only
     //- wave parameters
    /* dimensionedScalar waveT_;

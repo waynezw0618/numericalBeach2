@@ -39,7 +39,7 @@ numericalBeach::numericalBeach(volVectorField& U)
 :
     U_(U)
 {
-    dict=IOdictionary
+    IOdictionary dict
     (
      IOobject
      (
