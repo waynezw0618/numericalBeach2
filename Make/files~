@@ -1,3 +1,0 @@
-numericalBeach/numericalBeach.C
-
-LIB = $(FOAM_USER_LIBBIN)/libvofDynamicMesh
