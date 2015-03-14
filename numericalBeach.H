@@ -85,7 +85,7 @@ class numericalBeach
     dimensionedScalar zoneCenterZcoor_;
     
     // for Beach current
-    dimensionedScalar AV_;
+   // dimensionedScalar AV_;
   //  scalar curTsoft_;
 
     volScalarField sourceZone_;

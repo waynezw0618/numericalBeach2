@@ -85,7 +85,7 @@ numericalBeach::numericalBeach(volVectorField& U)
                 )
 {
     zoneCenterXcoor_=this->lookupOrDefault<dimensionedScalar>("zoneCenterXcoor",dimensionedScalar("Xc",dimLength,0.0));
-    AV_=this->lookupOrDefault<dimensionedScalar>("AV",dimensionedScalar("cctv",dimLength,0.0));
+    //AV_=this->lookupOrDefault<dimensionedScalar>("AV",dimensionedScalar("cctv",dimLength,0.0));
     //AV_(zoneCenterXcoor_),
     zoneCenterZcoor_=((h1_+h2_)/2*waveL_);
     //  curTsoft_(lookupOrDefault<scalar>("curTsoft",0.0)),
